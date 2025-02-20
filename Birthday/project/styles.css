@@ -1,0 +1,804 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Navigation */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #333;
+    padding: 1rem;
+    z-index: 1000;
+}
+
+.nav-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    background-color: transparent;
+}
+
+.nav-links a:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+    z-index: -1;
+}
+
+.nav-links a:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.nav-links a:hover:before {
+    transform: translateY(0);
+}
+
+.nav-links a.active {
+    background-color: #555;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+/* Add a subtle pulse animation for active link */
+@keyframes pulse {
+    0% {
+        transform: translateY(-3px) scale(1);
+    }
+    50% {
+        transform: translateY(-3px) scale(1.05);
+    }
+    100% {
+        transform: translateY(-3px) scale(1);
+    }
+}
+
+.nav-links a.active:hover {
+    animation: pulse 1s infinite;
+}
+
+/* Sections */
+.section {
+    min-height: 100vh;
+    padding: 80px 20px 20px;
+}
+
+/* Home */
+#home {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+                url('images/suhana-birthday.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.birthday-person {
+    animation: fadeIn 1.5s ease-out;
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.main-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 20px;
+    margin-bottom: 2rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease;
+    object-fit: cover;
+    aspect-ratio: 3/4;
+    max-height: 70vh;
+}
+
+.main-image:hover {
+    transform: scale(1.02);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+}
+
+.birthday-person h1 {
+    font-size: 4.5rem;
+    color: #ffffff;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5),
+                0 0 20px rgba(255, 255, 255, 0.2);
+    margin-top: 1rem;
+    font-family: 'Dancing Script', cursive;
+    animation: fadeInUp 1.5s ease-out, float 3s ease-in-out infinite;
+    position: relative;
+    letter-spacing: 2px;
+    font-weight: bold;
+    -webkit-text-stroke: 1px rgba(0, 0, 0, 0.3);
+}
+
+/* Updated animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-15px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+/* Updated glow effect */
+@keyframes glow {
+    0% {
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.5),
+                    0 0 20px rgba(255, 255, 255, 0.2),
+                    0 0 30px rgba(255, 255, 255, 0.1);
+    }
+    50% {
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.5),
+                    0 0 30px rgba(255, 255, 255, 0.4),
+                    0 0 40px rgba(255, 255, 255, 0.2);
+    }
+    100% {
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.5),
+                    0 0 20px rgba(255, 255, 255, 0.2),
+                    0 0 30px rgba(255, 255, 255, 0.1);
+    }
+}
+
+.birthday-person h1:hover {
+    animation: glow 2s infinite, float 3s ease-in-out infinite;
+}
+
+/* Update decorative elements */
+.birthday-person::before,
+.birthday-person::after {
+    content: '✨';
+    position: absolute;
+    font-size: 2.5rem;
+    color: rgba(255, 215, 0, 0.9);
+    text-shadow: 0 0 15px rgba(255, 215, 0, 0.7);
+    animation: twinkle 1.5s ease-in-out infinite;
+    filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.5));
+}
+
+.birthday-person::before {
+    left: 15%;
+    top: 15%;
+}
+
+.birthday-person::after {
+    right: 15%;
+    bottom: 15%;
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+}
+
+/* Gallery */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    padding: 1rem;
+    position: relative;
+    background: linear-gradient(rgba(114, 215, 246, 0.95), rgba(109, 238, 203, 0.95));
+}
+
+.gallery-grid img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.gallery-grid img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+    z-index: 2;
+}
+
+/* Gallery Section Header */
+#gallery h2 {
+    font-size: 3rem;
+    color: #ff69b4;
+    text-align: center;
+    margin-bottom: 2rem;
+    font-family: 'Dancing Script', cursive;
+    position: relative;
+    animation: floatText 3s ease-in-out infinite;
+}
+
+/* Birthday shower effects */
+.birthday-shower {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: #ff69b4;
+    animation: fall 3s linear infinite;
+}
+
+.balloon {
+    position: absolute;
+    width: 30px;
+    height: 40px;
+    background: #ff69b4;
+    border-radius: 50%;
+    animation: float 4s ease-in-out infinite;
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(-100%) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+@keyframes floatText {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Modal with animation */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 1001;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal.show {
+    opacity: 1;
+}
+
+.modal img {
+    max-width: 90%;
+    max-height: 90vh;
+    margin: auto;
+    display: block;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%) scale(0.7);
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border-radius: 10px;
+    box-shadow: 0 0 30px rgba(255,255,255,0.2);
+}
+
+.modal.show img {
+    transform: translateY(-50%) scale(1);
+}
+
+.close {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.modal.show .close {
+    opacity: 1;
+}
+
+.close:hover {
+    transform: rotate(90deg);
+    color: #ff4444;
+}
+
+/* Form */
+#wishes-form {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+input, 
+textarea {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+textarea {
+    height: 150px;
+    resize: vertical;
+}
+
+button {
+    background-color: #333;
+    color: white;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #555;
+}
+
+/* Music Control */
+.music-control {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+#music-toggle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Hide scrollbar for different browsers */
+body {
+    overflow-x: hidden;
+}
+
+/* For Webkit browsers (Chrome, Safari) */
+::-webkit-scrollbar {
+    width: 0;
+    background: transparent;
+}
+
+/* For Firefox */
+* {
+    scrollbar-width: none;
+}
+
+/* Sparkle effect */
+.sparkle {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: radial-gradient(circle, #fff 10%, transparent 60%);
+    animation: sparkleAnim 1s linear forwards;
+    pointer-events: none;
+}
+
+@keyframes sparkleAnim {
+    0% {
+        transform: scale(0) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1.5) rotate(90deg);
+        opacity: 0;
+    }
+}
+
+/* Enhance gallery images */
+.gallery-grid img {
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.gallery-grid img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+    z-index: 2;
+}
+
+/* Enhanced Send Wishes Section */
+#send-wishes {
+    background: linear-gradient(rgba(255, 192, 203, 0.2), rgba(255, 182, 193, 0.3));
+    padding-top: 100px;
+}
+
+#send-wishes h2 {
+    color: #ff69b4;
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    animation: floatText 3s ease-in-out infinite;
+}
+
+.send-wish-btn {
+    background: linear-gradient(45deg, #ff69b4, #ff1493);
+    color: white;
+    padding: 0.8rem 1.5rem;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 105, 180, 0.3);
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.send-wish-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 105, 180, 0.4);
+    background: linear-gradient(45deg, #ff1493, #ff69b4);
+}
+
+.thank-you-message {
+    text-align: center;
+    margin-top: 2rem;
+    padding: 1rem;
+    color: #ff69b4;
+    font-size: 1.2rem;
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* Host View Styles */
+.host-view-btn-container {
+    text-align: right;
+    margin-bottom: 2rem;
+}
+
+.host-btn {
+    background: linear-gradient(45deg, #ffd700, #ffa500);
+    color: white;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+}
+
+.host-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
+}
+
+.host-panel {
+    background: white;
+    border-radius: 15px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    animation: slideDown 0.5s ease-out;
+}
+
+.host-panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.host-panel-header h3 {
+    color: #ff69b4;
+    font-family: 'Dancing Script', cursive;
+    font-size: 2rem;
+    margin: 0;
+}
+
+.export-btn {
+    background: linear-gradient(45deg, #4CAF50, #45a049);
+    color: white;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.wishes-list {
+    max-height: 400px;
+    overflow-y: auto;
+    padding-right: 1rem;
+}
+
+.wish-card {
+    background: linear-gradient(45deg, rgba(255, 192, 203, 0.1), rgba(255, 105, 180, 0.1));
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    border-left: 4px solid #ff69b4;
+    animation: fadeIn 0.5s ease-out;
+}
+
+.wish-card h4 {
+    color: #ff69b4;
+    margin: 0 0 0.5rem 0;
+    font-size: 1.2rem;
+}
+
+.wish-card p {
+    color: #666;
+    margin: 0 0 0.5rem 0;
+}
+
+.wish-card small {
+    color: #999;
+    font-style: italic;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Enhanced Host View Styles */
+.wishes-stats {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 2rem;
+    padding: 1rem;
+    background: linear-gradient(45deg, rgba(255, 105, 180, 0.1), rgba(255, 20, 147, 0.1));
+    border-radius: 10px;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-number {
+    display: block;
+    font-size: 2rem;
+    color: #ff69b4;
+    font-weight: bold;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.wish-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.delete-wish-btn {
+    background: none;
+    border: none;
+    color: #ff4444;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.delete-wish-btn:hover {
+    transform: scale(1.2);
+    color: #ff0000;
+}
+
+.no-wishes {
+    text-align: center;
+    color: #666;
+    font-style: italic;
+    padding: 2rem;
+}
+
+/* Form Messages */
+.form-message {
+    margin: 1rem 0;
+    padding: 1rem;
+    border-radius: 10px;
+    animation: slideIn 0.3s ease-out;
+}
+
+.success-message {
+    background: linear-gradient(45deg, rgba(76, 175, 80, 0.1), rgba(69, 160, 73, 0.1));
+    border-left: 4px solid #4CAF50;
+    color: #2E7D32;
+}
+
+.error-message {
+    background: linear-gradient(45deg, rgba(244, 67, 54, 0.1), rgba(229, 57, 53, 0.1));
+    border-left: 4px solid #f44336;
+    color: #c62828;
+}
+
+.message-content {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.message-icon {
+    font-size: 1.2rem;
+}
+
+.fade-out {
+    opacity: 0;
+    transition: opacity 0.5s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Host Panel Loading State */
+.loading {
+    text-align: center;
+    padding: 2rem;
+    color: #666;
+    font-style: italic;
+}
+
+/* Host Authentication Styles */
+.host-btn.authenticated {
+    background: linear-gradient(45deg, #4CAF50, #45a049);
+}
+
+/* Enhanced Wish Card */
+.wish-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.wish-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(to bottom, #ff69b4, #ff1493);
+}
+
+.wish-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.wish-header small {
+    font-size: 0.8rem;
+    color: #999;
+}
+
+/* Enhanced Host Panel Animations */
+.slide-in {
+    animation: slideInPanel 0.5s ease-out;
+}
+
+@keyframes slideInPanel {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Host Authentication Button States */
+.host-btn.authenticated {
+    background: linear-gradient(45deg, #4CAF50, #45a049);
+    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+}
+
+.host-btn.authenticated:hover {
+    box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
+}
+
+/* Loading Animation */
+.loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    color: #666;
+    font-style: italic;
+    padding: 2rem;
+}
+
+.loading::after {
+    content: '🎈';
+    animation: bounce 1s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+} 

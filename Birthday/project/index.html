@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Wishes</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-links">
+            <a href="#home" class="active">Home</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#send-wishes">Send Wishes</a>
+        </div>
+    </nav>
+<!-- Home Section -->
+<section id="home" class="section">
+  <div class="birthday-person">
+      <h1>Happy Birthday SUHANA!</h1>
+  </div>
+</section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="section">
+        <h2>Photo Gallery</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="Images/1.jpg" alt="Birthday Image 1" onclick="enlargeImage(this.src)">
+            </div>
+            <div class="gallery-item">
+                <img src="Images/13.jpg" alt="Birthday Image 2" onclick="enlargeImage(this.src)">
+            </div>
+            <div class="gallery-item">
+                <img src="Images/14.jpg" alt="Birthday Image 3" onclick="enlargeImage(this.src)">
+            </div>
+            <div class="gallery-item">
+                <img src="Images/4.jpg" alt="Birthday Image 4" onclick="enlargeImage(this.src)">
+            </div>
+            <div class="gallery-item">
+                <img src="Images/5.jpg" alt="Birthday Image 5" onclick="enlargeImage(this.src)">
+            </div>
+            <div class="gallery-item">
+                <img src="Images/6.jpg" alt="Birthday Image 6" onclick="enlargeImage(this.src)">
+            </div>
+            <div class="gallery-item">
+                <img src="Images/7.jpg" alt="Birthday Image 7" onclick="enlargeImage(this.src)">
+            </div>
+            <div class="gallery-item">
+                <img src="Images/8.jpg" alt="Birthday Image 8" onclick="enlargeImage(this.src)">
+            </div>
+            <div class="gallery-item">
+                <img src="Images/9.jpg" alt="Birthday Image 9" onclick="enlargeImage(this.src)">
+            </div>
+            <div class="gallery-item">
+                <img src="Images/10.jpg" alt="Birthday Image 10" onclick="enlargeImage(this.src)">
+            </div>
+            <div class="gallery-item">
+                <img src="Images/11.jpg" alt="Birthday Image 11" onclick="enlargeImage(this.src)">
+            </div>
+            <div class="gallery-item">
+                <img src="Images/12.jpg" alt="Birthday Image 12" onclick="enlargeImage(this.src)">
+            </div>
+        </div>
+        <div id="modal" class="modal">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <img id="modal-img" src="" alt="Enlarged Image">
+            <div class="modal-nav">
+                <button class="prev" onclick="changeImage(-1)">&#10094;</button>
+                <button class="next" onclick="changeImage(1)">&#10095;</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Send Wishes Section -->
+    <section id="send-wishes" class="section">
+        <h2>Send Your Birthday Wishes to Suhana</h2>
+        <!-- Host View Button -->
+        <div class="host-view-btn-container">
+            <button onclick="toggleHostView()" class="host-btn">👑 Host View</button>
+        </div>
+        <!-- Host View Panel -->
+        <div id="host-panel" class="host-panel" style="display: none;">
+            <div class="host-panel-header">
+                <h3>Birthday Wishes</h3>
+                <button onclick="exportToExcel()" class="export-btn">📥 Export All</button>
+            </div>
+            <div id="wishes-list" class="wishes-list">
+                <!-- Wishes will be displayed here -->
+            </div>
+        </div>
+        <form id="wishes-form">
+            <div class="form-group">
+                <label for="name">Your Name:</label>
+                <input type="text" id="name" name="entry.1018459429" required 
+                    minlength="2" placeholder="Enter your name">
+            </div>
+            <div class="form-group">
+                <label for="message">Your Message:</label>
+                <textarea id="message" name="entry.839337160" required 
+                    minlength="5" placeholder="Write your birthday wishes here..."></textarea>
+            </div>
+            <button type="submit" class="send-wish-btn">Send Wishes 🎂</button>
+        </form>
+        <div id="thank-you" class="thank-you-message" style="display: none;">
+            <p>Thank you for your wishes! ❤️</p>
+        </div>
+    </section>
+
+    <!-- Background Music -->
+    <div class="music-control">
+        <button id="music-toggle">
+            <i class="fas fa-music"></i>
+        </button>
+        <audio id="bg-music" loop>
+            <source src="birthday-music.mp3" type="audio/mp3">
+        </audio>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
